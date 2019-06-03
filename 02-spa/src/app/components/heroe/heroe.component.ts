@@ -4,8 +4,7 @@ import { HeroesService } from '../../services/heroes.service';
 
 @Component({
   selector: 'app-heroe',
-  templateUrl: './heroe.component.html',
-  styles: []
+  templateUrl: './heroe.component.html'
 })
 export class HeroeComponent {
 
@@ -16,7 +15,6 @@ export class HeroeComponent {
 
     this.activatedRoute.params.subscribe( params => {
       this.heroe = this.heroesService.getHeroe(params['id'])
-      console.log(this.heroe);
     });
 
   }
