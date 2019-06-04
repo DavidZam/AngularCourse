@@ -40,7 +40,7 @@ export class HeroesService {
           casa: 'DC'
         },
         {
-          nombre: 'Spider-Man',
+          nombre: 'Spiderman',
           bio: 'Tras ser mordido por una araña radiactiva, obtuvo los siguientes poderes sobrehumanos, una gran fuerza, agilidad, poder trepar por paredes. La fuerza de Spider-Man le permite levantar 10 toneladas o más. Gracias a esta gran fuerza Spider-Man puede realizar saltos íncreibles. Un \'sentido arácnido\', que le permite saber si un peligro se cierne sobre él, antes de que suceda. En ocasiones este puede llevar a Spider-Man al origen del peligro.',
           img: 'assets/img/spiderman.png',
           aparicion: '1962-08-01',
@@ -56,22 +56,27 @@ export class HeroesService {
       ];
 
     constructor() {
-        console.log('Servicio listo para usar');
+        // console.log('Servicio listo para usar');
     }
 
     getHeroes(): Heroe[] {
         return this.heroes;
     }
 
-    getHeroe(id: string): Heroe {
-      return this.heroes[id];
+    getHeroe(idx: string): Heroe {
+      return this.heroes[idx];
     }
 
     buscarHeroe(termino: string): Heroe[] {
       const heroesArr: Heroe[] = [];
+      termino = termino.toLowerCase();
 
-      for (const heroe of this.heroes) {
-        if (heroe.nombre.indexOf(termino) >= 0) {
+      for (let i = 0; i < this.heroes.length; i++) {
+        const heroe = this.heroes[i];
+
+        const nombre = heroe.nombre.toLowerCase();
+        if (nombre.indexOf(termino) >= 0) {
+          heroe.idx = i;
           heroesArr.push(heroe);
         }
       }
@@ -87,4 +92,5 @@ export interface Heroe {
     img: string;
     aparicion: string;
     casa: string;
+    idx?: number;
 }

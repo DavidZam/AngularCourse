@@ -12,6 +12,13 @@ body {
   margin: 15px auto;
 }
 
+.bio-text-heroe {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px;
+  max-height: 125px;
+}
+
 /* Animaciones */
 
 .animated {
