@@ -68,11 +68,27 @@ hr {
 
 .whiteFontColor {
     color: white;
+    font-size: 14px;
 }
 
 .card-columns {
     width: 1100px;
     height: 2500px;
+}
+
+.card-title {
+    width: 285px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.card-body {
+    margin-bottom: 5%;
+}
+
+.songDate {
+    font-size: 13px;
 }
 
 .container {

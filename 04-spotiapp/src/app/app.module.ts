@@ -1,7 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+registerLocaleData(localeEs);
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -15,6 +18,9 @@ import { ROUTES } from './app.routes';
 // services
 import { SpotifyService } from './services/spotify.service';
 
+// pipes
+import { NoImagePipe } from './pipes/noimage.pipe';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +28,8 @@ import { SpotifyService } from './services/spotify.service';
     HomeComponent,
     SearchComponent,
     ArtistComponent,
-    NavbarComponent
+    NavbarComponent,
+    NoImagePipe
   ],
   imports: [
     BrowserModule,
@@ -30,7 +37,8 @@ import { SpotifyService } from './services/spotify.service';
     RouterModule.forRoot( ROUTES, { useHash: true } )
   ],
   providers: [
-    SpotifyService
+    SpotifyService,
+    { provide: LOCALE_ID, useValue: 'es' }
   ],
   bootstrap: [AppComponent]
 })
