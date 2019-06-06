@@ -1,0 +1,28 @@
+<div class="card-columns m-5 animated fadeIn">
+    <div *ngFor="let item of items" class="card">
+      <a href="{{item.external_urls.spotify}}" target="_blank">
+        <img [src]="item.images | noimage" class="card-img-top" alt="...">
+      </a>
+      <div class="card-body bottomMargin">
+        <h5 class="card-title">{{ item.name }}</h5>
+        <ng-container class="card-text display block">
+          <div>
+                <p *ngIf="isHomeComponent">
+                    <span *ngFor="let artist of item.artists" class="badge badge-pill badge-primary float-left">
+                        <a class="whiteFontColor" href="{{artist.external_urls.spotify}}" target="_blank">{{ artist.name }}</a>
+                    </span>
+                    <span class="float-right font13 blackFontColor">{{ item.release_date | date:'d/MM/yy' }}</span>
+                </p>
+          </div>
+          <div>
+              <p *ngIf="isSearchComponent">
+                <span *ngFor="let genre of item.genres" class="badge-space badge badge-pill badge-primary float-left">
+                    <span class="whiteFontColor">{{ genre }}</span>
+                </span>
+                <span class="float-right font13 bottomMargin blackFontColor">{{ item.followers.total | number }}</span>
+              </p>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>

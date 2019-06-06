@@ -71,6 +71,11 @@ hr {
     font-size: 14px;
 }
 
+.blackFontColor {
+    color: black;
+    font-size: 14px;
+}
+
 .card-columns {
     width: 1100px;
     height: 2500px;
@@ -83,14 +88,22 @@ hr {
     text-overflow: ellipsis;
 }
 
-.card-body {
+.bottomMargin {
     margin-bottom: 5%;
 }
 
-.songDate {
+.font13 {
     font-size: 13px;
 }
 
-.container {
-    padding-left: 3%;
+.badge-space {
+    margin: 3px;
+}
+
+.maginLeft {
+    margin-left: 745px;
+}
+
+.inputWidth {
+    width: 1550px;
 }

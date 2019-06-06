@@ -20,6 +20,8 @@ import { SpotifyService } from './services/spotify.service';
 
 // pipes
 import { NoImagePipe } from './pipes/noimage.pipe';
+import { CardsComponent } from './components/cards/cards.component';
+import { LoadingComponent } from './components/shared/loading/loading.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { NoImagePipe } from './pipes/noimage.pipe';
     SearchComponent,
     ArtistComponent,
     NavbarComponent,
-    NoImagePipe
+    NoImagePipe,
+    CardsComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 
 @Component({
@@ -8,16 +8,20 @@ import { SpotifyService } from '../../services/spotify.service';
 })
 export class SearchComponent {
 
+  @Input() isSearchParent: boolean;
   artists: any[] = [];
+  loading: boolean;
 
-  constructor(private spotify: SpotifyService) { }
+  constructor(private spotify: SpotifyService) {  }
 
   buscar(termino: string) {
     console.log(termino);
+    this.loading = true;
     this.spotify.getArtista(termino)
         .subscribe( (data: any) => {
             console.log(data);
-            this.artists = data;
+            this.loading = false;
+            this.artists = data.filter(elem => elem.images.length > 0);
         });
   }
 
