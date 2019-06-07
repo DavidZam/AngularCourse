@@ -32,10 +32,9 @@ hr {
 }
 
 .img-thumb {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
 }
-
 
 /* Animaciones */
 
@@ -104,6 +103,23 @@ hr {
     margin-left: 745px;
 }
 
+.maginLightLeft {
+    margin-left: -200px;
+}
+
 .inputWidth {
     width: 1550px;
+}
+
+.puntero {
+    cursor: pointer;
+}
+
+.artistImage {
+    border: 2px solid white;
+    border-radius: 15%;
+    -webkit-border-radius: 500px;
+    -moz-border-radius: 500px;
+    width: 30%;
+    height: auto;
 }
