@@ -15,11 +15,11 @@ export class SearchComponent {
   constructor(private spotify: SpotifyService) {  }
 
   buscar(termino: string) {
-    console.log(termino);
+    // console.log(termino);
     this.loading = true;
     this.spotify.getArtists(termino)
         .subscribe( (data: any) => {
-            console.log(data);
+            // console.log(data);
             this.loading = false;
             this.artists = data.filter(elem => elem.images.length > 0);
         });

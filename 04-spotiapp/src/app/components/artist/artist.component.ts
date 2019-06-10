@@ -17,10 +17,10 @@ export class ArtistComponent {
   constructor(private router: ActivatedRoute,
               private spotify: SpotifyService,
               private location: Location) {
-    this.loading = true;
-    this.router.params.subscribe( params => {
-      this.getArtist(params['id']);
-      this.getArtistTopTracks(params['id']);
+      this.loading = true;
+      this.router.params.subscribe( params => {
+      this.getArtist(params.id);
+      this.getArtistTopTracks(params.id);
     });
   }
 
@@ -28,7 +28,6 @@ export class ArtistComponent {
     this.loading = true;
     this.spotify.getArtist(id)
                 .subscribe( artist => {
-                  console.log(artist);
                   this.artist = artist;
                   this.loading = false;
                 });
@@ -37,7 +36,6 @@ export class ArtistComponent {
   getArtistTopTracks(id: string) {
     this.spotify.getArtistTopTracks(id)
                 .subscribe( topTracks => {
-                  console.log(topTracks);
                   this.topTracks = topTracks;
                 });
   }

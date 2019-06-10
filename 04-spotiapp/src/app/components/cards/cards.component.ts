@@ -15,6 +15,7 @@ export class CardsComponent {
   constructor(private router: Router) { }
 
   verArtista(item: any) {
+    // console.log(item);
     let artistId;
 
     if (item.type === 'artist') {

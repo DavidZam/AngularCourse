@@ -6,15 +6,13 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class SpotifyService {
 
-  constructor(private http: HttpClient) {
-    console.log('Spotify service listo');
-  }
+  constructor(private http: HttpClient) { }
 
   getQuery(query: string) {
       const url = `https://api.spotify.com/v1/${ query }`;
 
       const headers = new HttpHeaders({
-        Authorization: 'Bearer BQArWM6sBoyIyJ1vYcF-MlQTSr0maE4U-yTknBCAoZkh_t2qW-4zmOJwb9QC5qloQfOOahPJ4Fp9zunCXnU'
+        Authorization: 'Bearer BQB4yGxgZC_93K2ePIRGqaclKYLVemCd_RpK9O57KyWPnOqbBCHw4LxezTI6mmvRiVnM8xIMIFZ77cOOGI8'
       });
 
       return this.http.get(url, { headers });
@@ -36,7 +34,7 @@ export class SpotifyService {
 
    getArtistTopTracks(id: string) {
     return this.getQuery(`artists/${id}/top-tracks?country=us`)
-                .pipe( map( (data: any) => data['tracks']));
+                .pipe( map( (data: any) => data.tracks));
    }
 
 }

@@ -91,6 +91,10 @@ hr {
     margin-bottom: 5%;
 }
 
+.topMargin {
+    margin-top: 120px;
+}
+
 .font13 {
     font-size: 13px;
 }
@@ -122,4 +126,19 @@ hr {
     -moz-border-radius: 500px;
     width: 30%;
     height: auto;
+}
+
+.textImgComponent {
+    position:relative;
+}
+
+.textBeyondImage {
+    position: absolute;
+    top: 10px;
+    margin-left: 350px;
+}
+
+.alignTextCenter {
+    text-align: center; 
+    vertical-align: middle;
 }

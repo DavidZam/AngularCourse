@@ -9,8 +9,8 @@
       <div class="card-body bottomMargin">
         <h5 class="card-title">{{ item.name }}</h5>
         <ng-container class="card-text display block">
-          <span *ngFor="let artist of item.artists" class="badge badge-pill badge-primary float-left">
-              <span class="whiteFontColor puntero" (click)="verArtista(item)">{{ artist.name }}</span>
+          <span *ngFor="let artist of item.artists | slice:0:2" class="badge badge-pill badge-primary">
+              <span class="whiteFontColor puntero" (click)="verArtista(artist)">{{ artist.name }}</span>
           </span>
           <span class="float-right font13 blackFontColor">{{ item.release_date | date:'d/MM/yy' }}</span>
         </ng-container>

@@ -1,32 +1,34 @@
 <app-loading class="md-5" *ngIf="loading"></app-loading>
 
-  <div class="animated fadeIn m-5 display-inline" *ngIf="!loading">
-
-      
-      <img [src]="artist.images | noimage" class="artistImage">
+<div *ngIf="!loading">
+  <div class="textImgComponent m-5">
+    <img [src]="artist.images | noimage" class="artistImage">
     
-        <h3>{{ artist.name}}</h3>
-          <h6>Seguidores: {{ artist.followers.total | number }}</h6>
-          <span *ngFor="let genre of artist.genres" class="badge-space badge badge-pill badge-primary float-left">
-              <span class="whiteFontColor">{{ genre }}</span>
-          </span>
-      
-      <div class="float-right">
-          <a [href]="artist.external_urls.spotify" target="_blank" class="btn btn-outline-success">
-              Ir a la página del artista
-            </a>
-            <button (click)="back()" class="btn btn-outline-success">
-              Regresar
-            </button>
-      </div>    
+    <div class="textBeyondImage">
+      <h3 >{{ artist.name}}</h3>
+      <h6 >Seguidores: {{ artist.followers.total | number }}</h6>
+      <span *ngFor="let genre of artist.genres" class="badge-space badge badge-pill badge-primary ">
+          <span class=" whiteFontColor">{{ genre }}</span>
+      </span>
+
+      <div class="topMargin">
+        <a [href]="artist.external_urls.spotify" target="_blank" class="btn btn-outline-success">
+          Ir a la página del artista
+        </a>
+        <button (click)="back()" class="btn btn-outline-success">
+          Regresar
+        </button>
+      </div>  
 
     </div>
+    
+  </div>
 
 <div class="row">
   <div class="col">
     <table class="table whiteFontColor">
       <thead>
-        <tr>
+        <tr class="alignTextCenter">
           <th>Foto</th>
           <th>Album</th>
           <th>Canción</th>
@@ -35,14 +37,17 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let track of topTracks">
+        <tr *ngFor="let track of topTracks" class="alignTextCenter">
           <td>
             <img [src]="track.album.images | noimage" class="img-thumb">
           </td>
           <td>{{ track.album.name }}</td>
           <td>{{ track.name }}</td>
           <td>
-            <audio [src]="track.preview_url" controls></audio>
+            <audio *ngIf="track.preview_url !== null" [src]="track.preview_url" controls></audio>
+            <span *ngIf="track.preview_url === null">
+                Preview No Available
+            </span>
           </td>
         </tr>
       </tbody>
