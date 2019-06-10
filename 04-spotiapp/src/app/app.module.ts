@@ -11,6 +11,8 @@ import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
 import { ArtistComponent } from './components/artist/artist.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { CardsComponent } from './components/cards/cards.component';
+import { LoadingComponent } from './components/shared/loading/loading.component';
 
 // routes
 import { ROUTES } from './app.routes';
@@ -20,9 +22,7 @@ import { SpotifyService } from './services/spotify.service';
 
 // pipes
 import { NoImagePipe } from './pipes/noimage.pipe';
-import { CardsComponent } from './components/cards/cards.component';
-import { LoadingComponent } from './components/shared/loading/loading.component';
-
+import { DomseguroPipe } from './pipes/domseguro.pipe';
 
 @NgModule({
   declarations: [
@@ -32,6 +32,7 @@ import { LoadingComponent } from './components/shared/loading/loading.component'
     ArtistComponent,
     NavbarComponent,
     NoImagePipe,
+    DomseguroPipe,
     CardsComponent,
     LoadingComponent
   ],

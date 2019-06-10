@@ -75,6 +75,10 @@ hr {
     font-size: 14px;
 }
 
+.blackFontColor2 {
+    color: black;
+}
+
 .card-columns {
     width: 1100px;
     height: 2500px;
@@ -142,3 +146,9 @@ hr {
     text-align: center; 
     vertical-align: middle;
 }
+
+.center {
+    width: 50%;
+    margin: 0 auto;
+    margin-left: 500px;
+  }

@@ -1,3 +1,9 @@
 <app-loading class="md-5" *ngIf="loading"></app-loading>
 
+<div *ngIf="error" class="alert alert-danger animated fadeIn alignTextCenter center">
+    <div>
+        <h4 class="blackFontColor2">Error: {{ errorMsg }}</h4>
+    </div>
+</div>
+
 <app-cards [items]='newSongs' [isHomeComponent]='true'></app-cards>
