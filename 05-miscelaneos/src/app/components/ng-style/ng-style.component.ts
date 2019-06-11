@@ -21,7 +21,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NgStyleComponent implements OnInit {
 
-  tamano:number = 10;
+  tamano = 10;
 
   constructor() {
   }
