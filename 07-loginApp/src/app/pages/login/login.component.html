@@ -1,32 +1,44 @@
-<div class="limiter">
+<div class="limiter animated fadeInLeft">
     <div class="container-login100">
         <div class="wrap-login100 p-t-50 p-b-90">
-            <form class="login100-form validate-form flex-sb flex-w">
+
+            <form (ngSubmit)='login( loginForm )'
+                  #loginForm="ngForm"
+                  class="login100-form validate-form flex-sb flex-w">
 
                 <span class="login100-form-title p-b-30">
                     Login
                 </span>
 
-                <!-- <span class="text-danger">El correo es obligatorio</span> -->
+                <span *ngIf="loginForm.submitted && loginForm.controls['email'].errors"
+                          class="text-danger animated fadeIn">El correo es obligatorio</span>
                 <div class="wrap-input100 m-b-16">
                     <input class="input100" 
-                           type="text" 
-                           name="username" 
+                           type="email" 
+                           name="email" 
+                           [(ngModel)]='usuarioLogin.email'
+                           minlength="2"
+                           required
+                           email
                            placeholder="Email">
                     <span class="focus-input100"></span>
                 </div>
                 
-                <!-- <span class="text-danger">La contraseña debe de ser más de 6 letras</span> -->
+                <span *ngIf="loginForm.submitted && loginForm.controls['password'].errors"
+                      class="text-danger animated fadeIn">Al menos 6 caracteres</span>
                 <div class="wrap-input100 m-b-16" data-validate = "Password is required">
                     <input class="input100"
                            type="password" 
-                           name="pass" 
+                           name="password" 
+                           [(ngModel)]='usuarioLogin.password'
+                           minlength="6"
+                           required
                            placeholder="Contraseña">
                     <span class="focus-input100"></span>
                 </div>
                 
                 <div class="flex-sb-m w-full p-t-3 p-b-24">
-                    <div class="contact100-form-checkbox">
+                    <div class="contact100-form-checkbox p-t-6">
                         <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
                         <label class="label-checkbox100" for="ckb1">
                             Recordar mi usuario
@@ -34,7 +46,7 @@
                     </div>
 
                     <div>
-                        <a routerLink="/registro" class="txt1">
+                        <a routerLink="../registro" class="txt1">
                             ¿No tienes cuenta?
                         </a>
                     </div>
