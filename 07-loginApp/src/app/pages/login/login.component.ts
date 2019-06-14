@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioModel } from '../../models/usuario.model';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
+import { UsuarioModel } from '../../models/usuario.model';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,11 +14,18 @@ import { NgForm } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   usuarioLogin: UsuarioModel;
+  rememberMe = false;
 
-  constructor() { }
+  constructor(private authServ: AuthService,
+              private router: Router) { }
 
   ngOnInit() {
     this.usuarioLogin = new UsuarioModel();
+
+    if (localStorage.getItem('email')) {
+      this.usuarioLogin.email = localStorage.getItem('email');
+      this.rememberMe = true;
+    }
   }
 
   login(loginForm: NgForm) {
@@ -22,9 +33,28 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    console.log('Formulario enviado');
-    console.log(this.usuarioLogin);
-    console.log(loginForm);
+    Swal.fire({
+      allowOutsideClick: false,
+      type: 'info',
+      text: 'Espera por favor'
+    });
+    Swal.showLoading();
+
+    this.authServ.login(this.usuarioLogin)
+      .subscribe( res => {
+        Swal.close();
+        if (this.rememberMe) {
+          localStorage.setItem('email', this.usuarioLogin.email);
+        }
+        this.router.navigateByUrl('/home');
+      }, (err) => {
+        console.error(err.error.error.message);
+        Swal.fire({
+          type: 'error',
+          title: 'Error al entrar',
+          text: err.error.error.message
+        });
+      });
   }
 
 }
